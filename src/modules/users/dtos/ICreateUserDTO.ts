@@ -3,5 +3,5 @@ export default interface ICreateUserDTO {
   lastname: string;
   email: string;
   password: string;
-  country: string;
+  country?: string;
 }

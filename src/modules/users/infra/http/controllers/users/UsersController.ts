@@ -17,7 +17,7 @@ export default class usersController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, lastname, email, password, country } = request.body;
+    const { name, lastname, email, password } = request.body;
 
     const createUserService = container.resolve(CreateUserService);
 
@@ -26,7 +26,6 @@ export default class usersController {
       lastname,
       email,
       password,
-      country,
     });
 
     return response.status(201).json(newUser);

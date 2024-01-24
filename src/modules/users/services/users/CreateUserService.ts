@@ -20,7 +20,6 @@ class CreateUserService {
     lastname,
     email,
     password,
-    country,
   }: ICreateUserDTO): Promise<User> {
     const emailCaseSensitive = email.toLocaleLowerCase();
 
@@ -39,7 +38,7 @@ class CreateUserService {
       lastname,
       email: emailCaseSensitive,
       password: hashedPassword,
-      country,
+      country: 'Brasil',
     });
 
     return newUser;
