@@ -1,4 +1,4 @@
-export default interface ICreateProjectsDTO {
+export default interface ICreateProjectDTO {
   title: string;
   tags: string;
   link: string;

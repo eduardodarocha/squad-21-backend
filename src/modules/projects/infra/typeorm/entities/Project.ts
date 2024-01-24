@@ -9,25 +9,22 @@ import { v4 as uuidV4 } from 'uuid';
 
 import { Expose } from 'class-transformer';
 
-@Entity('users')
-class User {
+@Entity('projects')
+class Project {
   @PrimaryColumn()
   id: string;
 
   @Column()
-  name: string;
+  title: string;
 
   @Column()
-  lastname: string;
+  tags: string;
 
   @Column()
-  email: string;
+  link: string;
 
   @Column()
-  country: string;
-
-  @Column({ select: false })
-  password: string;
+  description: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -42,4 +39,4 @@ class User {
   }
 }
 
-export { User };
+export { Project };
