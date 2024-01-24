@@ -1,9 +1,10 @@
 export default interface IResponseDTO {
   id: string;
-  name: string;
-  lastname: string;
-  email: string;
-  country: string;
+  title: string;
+  tags: string;
+  link: string;
+  description: string;
+  image: string;
   created_at: Date;
   updated_at: Date;
 }
