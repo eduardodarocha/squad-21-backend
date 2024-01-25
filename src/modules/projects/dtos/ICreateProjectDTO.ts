@@ -3,5 +3,5 @@ export default interface ICreateProjectDTO {
   tags: string;
   link: string;
   description: string;
-  image: string; // TODO: upload image
+  image: string; // upload image ?????
 }
