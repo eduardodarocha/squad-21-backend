@@ -7,8 +7,8 @@ const projectsRouter = Router();
 
 const projectsController = new ProjectsController();
 
-projectsRouter.post('/', ensureAuthenticated, projectsController.create);
+projectsRouter.post('/', ensureAuthenticated, projectsController.create); // POST do Project
 
-projectsRouter.get('/me', ensureAuthenticated, projectsController.showMe);
+projectsRouter.get('/me', ensureAuthenticated, projectsController.showMe); // GET do Project
 
 export default projectsRouter;
