@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
-import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import { User } from '@modules/users/infra/typeorm/entities/User';
+import IProjectsRepository from '@modules/projects/repositories/IProjectsRepository';
+import { Project } from '@modules/projects/infra/typeorm/entities/Project';
 import AppError from '@shared/errors/AppError';
 
 interface IRequest {
@@ -8,31 +8,33 @@ interface IRequest {
 }
 
 @injectable()
-class FindUserService {
+class FindProjectService {
   constructor(
-    @inject('UsersRepository')
-    private usersRepository: IUsersRepository,
+    @inject('ProjectsRepository')
+    private usersRepository: IProjectsRepository,
   ) {}
 
-  public async execute({ id }: IRequest): Promise<Omit<User, 'password'>> {
-    const user = await this.usersRepository.findById(id);
+  public async execute({ id }: IRequest): Promise<Omit<Project, 'password'>> {
+    const project = await this.usersRepository.findById(id);
+    // verifica para  o que a 'password' precisa ser mudada
 
-    if (!user) {
-      throw new AppError('Usuário não encontrado.');
+    if (!project) {
+      throw new AppError('Projeto não encontrado.');
     }
 
-    const formatedUser = {
-      id: user.id,
-      name: user.name,
-      lastname: user.lastname,
-      email: user.email,
-      country: user.country,
-      created_at: user.created_at,
-      updated_at: user.updated_at,
+    const formatedProject = {
+      id: project.id,
+      title: project.title,
+      tags: project.tags,
+      link: project.link,
+      description: project.description,
+      image: project.image,
+      created_at: project.created_at,
+      updated_at: project.updated_at,
     };
 
-    return formatedUser;
+    return formatedProject;
   }
 }
 
-export default FindUserService;
+export default FindProjectService;
