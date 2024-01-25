@@ -4,7 +4,7 @@ export default interface IResponseDTO {
   tags: string;
   link: string;
   description: string;
-  image: string;
+  image: string; // upload image ???
   created_at: Date;
   updated_at: Date;
 }
