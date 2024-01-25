@@ -32,6 +32,9 @@ class Project {
 =======
 >>>>>>> d719930 (:construction: create project repository)
 
+  @Column()
+  image: string;
+
   @CreateDateColumn()
   created_at: Date;
 
