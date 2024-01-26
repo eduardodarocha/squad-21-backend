@@ -10,10 +10,10 @@ class projectsRepository implements IProjectsRepository {
     this.ormRepository = getRepository(Project);
   }
 
-  public async findByTitle(title: string): Promise<Project | undefined> {
+  public async findByTag(tags: string): Promise<Project | undefined> {
     const project = await this.ormRepository
       .createQueryBuilder('project')
-      .where('project.title = :title', { title })
+      .where('project.tags = :tags', { tags })
       .getOne();
 
     return project;

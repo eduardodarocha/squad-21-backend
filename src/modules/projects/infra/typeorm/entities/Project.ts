@@ -25,12 +25,6 @@ class Project {
 
   @Column()
   description: string;
-<<<<<<< HEAD
-
-  @Column()
-  image: string;
-=======
->>>>>>> d719930 (:construction: create project repository)
 
   @Column()
   image: string;

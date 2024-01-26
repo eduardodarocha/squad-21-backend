@@ -5,12 +5,11 @@ import CreateProjectService from '@modules/projects/services/projects/CreateProj
 
 export default class projectsController {
   public async showMe(request: Request, response: Response): Promise<Response> {
-    const { project } = request;
-
+    const { id } = request.params;
     const findProjectService = container.resolve(FindProjectService);
 
     const projectFound = await findProjectService.execute({
-      id: project.id,
+      id,
     });
 
     return response.json(projectFound);

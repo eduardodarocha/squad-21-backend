@@ -9,6 +9,6 @@ const projectsController = new ProjectsController();
 
 projectsRouter.post('/', ensureAuthenticated, projectsController.create); // POST do Project
 
-projectsRouter.get('/me', ensureAuthenticated, projectsController.showMe); // GET do Project
+projectsRouter.get('/:id', ensureAuthenticated, projectsController.showMe); // GET do Project
 
 export default projectsRouter;

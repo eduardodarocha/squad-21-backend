@@ -3,9 +3,5 @@ export default interface ICreateProjectDTO {
   tags: string;
   link: string;
   description: string;
-<<<<<<< HEAD
-  image: string; // upload image ?????
-=======
-  image: string; // TODO: upload image
->>>>>>> d719930 (:construction: create project repository)
+  image: string;
 }

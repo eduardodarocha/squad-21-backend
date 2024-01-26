@@ -11,11 +11,11 @@ interface IRequest {
 class FindProjectService {
   constructor(
     @inject('ProjectsRepository')
-    private usersRepository: IProjectsRepository,
+    private projectsRepository: IProjectsRepository,
   ) {}
 
   public async execute({ id }: IRequest): Promise<Omit<Project, 'password'>> {
-    const project = await this.usersRepository.findById(id);
+    const project = await this.projectsRepository.findById(id);
     // verifica para  o que a 'password' precisa ser mudada
 
     if (!project) {
