@@ -22,38 +22,38 @@
 #### - 🖥️ Desktop
 
 <h5>Tela de login</h5>
-<img src="./tmp/images/tela%20de%20login.jpg" style="width:500px" alt="Tela de login">
+<img src="./src/shared/views/tela%20de%20login.jpg" style="width:500px" alt="Tela de login">
 <br>
 <br>
 
 <h5>Tela de cadastro</h5>
-<img src="./tmp/images/tela%20de%20cadastro.jpg" style="width:500px" alt="Tela de cadastro">
+<img src="./src/shared/views/tela%20de%20cadastro.jpg" style="width:500px" alt="Tela de cadastro">
 <br>
 <br>
 
 <h5>Tela de projetos</h5>
-<img src="./tmp/images/tela%20de%20projetos.jpg" style="width:500px" alt="Tela de projetos">
+<img src="./src/shared/views/tela%20de%20projetos.jpg" style="width:500px" alt="Tela de projetos">
 <br>
 <br>
 
 <h5>Tela descobrir projetos</h5>
-<img src="./tmp/images/tela%20descobrir.jpg" style="width:500px" alt="Tela descobrir projetos">
+<img src="./src/shared/views/tela%20descobrir.jpg" style="width:500px" alt="Tela descobrir projetos">
 <br>
 <br>
 
 #### - 📱Mobile
 
 <h5>Tela de login Mobile</h5>
-<img src="./tmp/images/tela%20de%20login%20mobile.jpg" style="width:200px" alt="Tela de login mobile">
+<img src="./src/shared/views/tela%20de%20login%20mobile.jpg" style="width:200px" alt="Tela de login mobile">
 <br>
 <br>
 
 <h5>Tela de cadastro Mobile</h5>
-<img src="./tmp/images/tela%20de%20cadastro%20mobile.jpg" style="width:200px" alt="Tela de cadastro mobile">
+<img src="./src/shared/views/tela%20de%20cadastro%20mobile.jpg" style="width:200px" alt="Tela de cadastro mobile">
 <br>
 <br>
  <h5>Tela de projetos Mobile</h5 >
-<img src="./tmp/images/tela%20de%20projetos%20mobile.jpg" style="width:200px" alt="Tela de projetos mobile">
+<img src="./src/shared/views/tela%20de%20projetos%20mobile.jpg" style="width:200px" alt="Tela de projetos mobile">
 <br>
 
 ---
