@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import IProjectsRepository from '@modules/projects/repositories/IProjectsRepository';
-import { Project } from '@modules/projects/infra/typeorm/entities/Project';
 import AppError from '@shared/errors/AppError';
+import IResponseProjectDTO from '../dtos/IResponseProjectDTO';
 
 interface IRequest {
   id: string;
@@ -14,26 +14,23 @@ class FindProjectService {
     private projectsRepository: IProjectsRepository,
   ) {}
 
-  public async execute({ id }: IRequest): Promise<Omit<Project, 'password'>> {
+  public async execute({ id }: IRequest): Promise<IResponseProjectDTO> {
     const project = await this.projectsRepository.findById(id);
-    // verifica para  o que a 'password' precisa ser mudada
 
     if (!project) {
-      throw new AppError('Projeto não encontrado.');
+      throw new AppError('Não foi possível encontrar esse projeto.', 400);
     }
 
-    const formatedProject = {
+    return {
       id: project.id,
+      user_name: `${project.user.name} ${project.user.lastname}`,
       title: project.title,
       tags: project.tags,
       link: project.link,
       description: project.description,
-      image: project.image,
+      image_url: project.image_url,
       created_at: project.created_at,
-      updated_at: project.updated_at,
     };
-
-    return formatedProject;
   }
 }
 

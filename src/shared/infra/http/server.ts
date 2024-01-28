@@ -5,7 +5,7 @@ import cors from 'cors';
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 import '@shared/container';
-import avatarUpload from '@config/avatarUpload';
+import projectsUpload from '@config/projectsUpload';
 
 import AppError from '../../errors/AppError';
 
@@ -18,7 +18,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('/avatar', express.static(`${avatarUpload.uploadsFolder}`));
+app.use('/images', express.static(`${projectsUpload.uploadsFolder}`));
 
 app.use(routes);
 
