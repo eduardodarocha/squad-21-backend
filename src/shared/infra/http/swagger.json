@@ -1,1 +1,32 @@
-{}
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentação da API do Hackathon - Portfolio Orange",
+    "version": "1.0.0",
+    "description": "API com a função de documentar e manipular os endpoints da aplicação Portfolio Orange do Squad-21.",
+    "contact": {
+      "name": "Squad-21",
+      "email": "eduardomfrocha@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/teste",
+      "description": "Servidor de teste"
+    }
+  ],
+  "paths": {
+    "/sessions": {
+      "get": {
+        "summary": "Retorna todos os usuários",
+        "description": "Retorna todos os usuários cadastrados na base de dados",
+        "responses": {
+          "200": {
+            "description": "Retorna todos os usuários cadastrados"
+          }
+        }
+      }
+    }
+  }
+
+}
