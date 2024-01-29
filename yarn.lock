@@ -1847,6 +1847,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/swagger-ui-express@npm:^4.1.6":
+  version: 4.1.6
+  resolution: "@types/swagger-ui-express@npm:4.1.6"
+  dependencies:
+    "@types/express": "npm:*"
+    "@types/serve-static": "npm:*"
+  checksum: b7d10d04e70a4e35b0b98bed9ecebb51c0c9bddcb56f7132022b6022c58d643b05a7fe97e792cd6dc8d2c5d952ef173922db56137642a74b464d704fc3c8962b
+  languageName: node
+  linkType: hard
+
 "@types/uuid@npm:^8.3.0":
   version: 8.3.4
   resolution: "@types/uuid@npm:8.3.4"
@@ -6175,6 +6185,7 @@ __metadata:
     "@types/jsonwebtoken": "npm:^8.5.0"
     "@types/mime": "npm:^2.0.3"
     "@types/multer": "npm:^1.4.5"
+    "@types/swagger-ui-express": "npm:^4.1.6"
     "@types/uuid": "npm:^8.3.0"
     "@typescript-eslint/eslint-plugin": "npm:^4.14.2"
     "@typescript-eslint/parser": "npm:^4.14.3-alpha.7"
