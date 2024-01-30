@@ -15,7 +15,7 @@ class CreateProjectService {
     @inject('ProjectsRepository')
     private projectsRepository: IProjectsRepository,
 
-    @inject('DiskStoragePhotoClientsProvider')
+    @inject('DiskStorageImagesProvider')
     private storageProvider: IStorageImagesProvider,
   ) {}
 
@@ -58,6 +58,7 @@ class CreateProjectService {
       link,
       description,
       image: filename,
+      user: isUser,
     });
 
     return newProject;
