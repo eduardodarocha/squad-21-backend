@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 import IProjectsRepository from '@modules/projects/repositories/IProjectsRepository';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import IResponseProjectDTO from '../dtos/IResponseProjectDTO';
+import IStorageImagesProvider from '@shared/container/providers/StorageImagesProvider/models/IStorageImagesProvider';
 
 interface IRequest {
   id: string;
@@ -10,16 +10,19 @@ interface IRequest {
 }
 
 @injectable()
-class FindProjectService {
+class DeleteProjectService {
   constructor(
     @inject('ProjectsRepository')
     private projectsRepository: IProjectsRepository,
 
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('DiskStorageImagesProvider')
+    private storageProvider: IStorageImagesProvider,
   ) {}
 
-  public async execute({ id, userId }: IRequest): Promise<IResponseProjectDTO> {
+  public async execute({ id, userId }: IRequest): Promise<void> {
     const isUser = await this.usersRepository.findById(userId);
 
     if (!isUser) {
@@ -35,17 +38,19 @@ class FindProjectService {
       throw new AppError('Não foi possível encontrar esse projeto.');
     }
 
-    return {
-      id: project.id,
-      user_name: `${project.user.name} ${project.user.lastname}`,
-      title: project.title,
-      tags: project.tags,
-      link: project.link,
-      description: project.description,
-      image_url: project.image_url,
-      created_at: project.created_at,
-    };
+    if (project.user_id !== userId) {
+      throw new AppError(
+        'Você não tem permissão para realizar essa ação.',
+        401,
+      );
+    }
+
+    if (project.image) {
+      await this.storageProvider.deleteFile(project.image);
+    }
+
+    await this.projectsRepository.delete(id);
   }
 }
 
-export default FindProjectService;
+export default DeleteProjectService;
