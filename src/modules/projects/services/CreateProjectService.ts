@@ -58,6 +58,7 @@ class CreateProjectService {
       link,
       description,
       image: filename,
+      user: isUser,
     });
 
     return newProject;
