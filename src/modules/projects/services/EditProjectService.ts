@@ -7,7 +7,7 @@ import IProjectsRepository from '../repositories/IProjectsRepository';
 import { Project } from '../infra/typeorm/entities/Project';
 
 @injectable()
-class CreateProjectService {
+class EditProjectService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -21,11 +21,25 @@ class CreateProjectService {
 
   public async execute(
     userId: string,
+    id: string,
     { title, tags, link, description, image }: ICreateProjectDTO,
-  ): Promise<Project> {
+  ): Promise<Project | undefined> {
     const isUser = await this.usersRepository.findById(userId);
 
     if (!isUser) {
+      throw new AppError(
+        'Você não tem permissão para realizar essa ação.',
+        401,
+      );
+    }
+
+    const project = await this.projectsRepository.findById(id);
+
+    if (!project) {
+      throw new AppError('Não foi possível encontrar esse projeto.');
+    }
+
+    if (project.user_id !== userId) {
       throw new AppError(
         'Você não tem permissão para realizar essa ação.',
         401,
@@ -50,19 +64,26 @@ class CreateProjectService {
       throw new AppError('Esse link já está cadastrado para um projeto.');
     }
 
-    const filename = await this.storageProvider.saveFile(image);
+    let filename = '';
 
-    const newProject = await this.projectsRepository.create({
+    if (image !== '') {
+      filename = await this.storageProvider.saveFile(image);
+      if (project.image) {
+        await this.storageProvider.deleteFile(project.image);
+      }
+    }
+
+    const newProject = await this.projectsRepository.update({
+      id,
       title: titleCaseSensitive,
       tags: tags.toLocaleLowerCase(),
       link,
       description,
-      image: filename,
-      user: isUser,
+      image: image !== '' ? filename : project.image,
     });
 
     return newProject;
   }
 }
 
-export default CreateProjectService;
+export default EditProjectService;
