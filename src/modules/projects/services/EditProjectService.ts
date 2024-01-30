@@ -15,7 +15,7 @@ class EditProjectService {
     @inject('ProjectsRepository')
     private projectsRepository: IProjectsRepository,
 
-    @inject('DiskStoragePhotoClientsProvider')
+    @inject('DiskStorageImagesProvider')
     private storageProvider: IStorageImagesProvider,
   ) {}
 

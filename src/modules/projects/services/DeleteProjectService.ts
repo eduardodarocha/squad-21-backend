@@ -18,7 +18,7 @@ class DeleteProjectService {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
 
-    @inject('DiskStoragePhotoClientsProvider')
+    @inject('DiskStorageImagesProvider')
     private storageProvider: IStorageImagesProvider,
   ) {}
 
