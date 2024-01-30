@@ -33,10 +33,31 @@ class FindProjectsByUserService {
       );
     }
 
-    const projects = await this.projectsRepository.findByUser(
-      userId,
-      query ? query.toLocaleLowerCase() : null,
-    );
+    let projects: any = [];
+
+    if (query) {
+      const tags = query.toLocaleLowerCase().split('%');
+
+      await Promise.all(
+        tags.map(async tag => {
+          const filteredProjects = await this.projectsRepository.findByUser(
+            userId,
+            tag,
+          );
+
+          projects = projects.concat(filteredProjects);
+        }),
+      );
+
+      const uniqueProjects = projects.filter(
+        (project: any, index: any, self: any) =>
+          index === self.findIndex(p => p.id === project.id),
+      );
+
+      projects = uniqueProjects;
+    } else {
+      projects = await this.projectsRepository.findByUser(userId, null);
+    }
 
     const formattedProjectsList = formatProjectResponse(projects);
 

@@ -1,4 +1,13 @@
-import { getRepository, Like, Not, Repository } from 'typeorm';
+import {
+  getRepository,
+  Not,
+  Repository,
+  In,
+  Any,
+  Like,
+  ILike,
+  Raw,
+} from 'typeorm';
 import { Project } from '@modules/projects/infra/typeorm/entities/Project';
 import IProjectsRepository from '@modules/projects/repositories/IProjectsRepository';
 import ICreateProjectDTO from '@modules/projects/dtos/ICreateProjectDTO';

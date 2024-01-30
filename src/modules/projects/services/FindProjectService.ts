@@ -39,10 +39,10 @@ class FindProjectService {
       id: project.id,
       user_name: `${project.user.name} ${project.user.lastname}`,
       title: project.title,
-      tags: project.tags,
-      link: project.link,
       description: project.description,
-      image_url: project.image_url,
+      link: project.link,
+      tags: project.tags,
+      image_url: project.getImageUrl() || '',
       created_at: project.created_at,
     };
   }

@@ -48,25 +48,29 @@ class EditProjectService {
 
     const titleCaseSensitive = title.toLocaleLowerCase();
 
-    const isTitleProject = await this.projectsRepository.findByTitle(
-      titleCaseSensitive,
-    );
-
-    if (isTitleProject) {
-      throw new AppError(
-        'Esse título já está sendo utilizado para um projeto. Informe outro título, por favor.',
+    if (title.toLocaleLowerCase() !== project.title) {
+      const isTitleProject = await this.projectsRepository.findByTitle(
+        titleCaseSensitive,
       );
+
+      if (isTitleProject) {
+        throw new AppError(
+          'Esse título já está sendo utilizado para um projeto. Informe outro título, por favor.',
+        );
+      }
     }
 
-    const isLinkProject = await this.projectsRepository.findByLink(link);
+    if (link !== project.link) {
+      const isLinkProject = await this.projectsRepository.findByLink(link);
 
-    if (isLinkProject) {
-      throw new AppError('Esse link já está cadastrado para um projeto.');
+      if (isLinkProject) {
+        throw new AppError('Esse link já está cadastrado para um projeto.');
+      }
     }
 
     let filename = '';
 
-    if (image !== '') {
+    if (image && image !== '') {
       filename = await this.storageProvider.saveFile(image);
       if (project.image) {
         await this.storageProvider.deleteFile(project.image);
