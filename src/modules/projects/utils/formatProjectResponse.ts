@@ -14,20 +14,23 @@ interface FormattedProject {
 export function formatProjectResponse(
   listProjects: Project[],
 ): FormattedProject[] {
-  return listProjects.reduce((project: any, projects: any[]) => {
-    const newProject = {
-      id: project.id,
-      user_name: `${project.user.name} ${project.user.lastname}`,
-      title: project.title,
-      tags: project.tags,
-      link: project.link,
-      description: project.description,
-      image_url: project.image_url,
-      created_at: project.created_at,
-    };
+  return listProjects.reduce(
+    (projects: FormattedProject[], project: Project) => {
+      const newProject: FormattedProject = {
+        id: project.id,
+        user_name: `${project.user.name} ${project.user.lastname}`,
+        title: project.title,
+        tags: project.tags,
+        link: project.link,
+        description: project.description,
+        image_url: project.getImageUrl() || '',
+        created_at: project.created_at,
+      };
 
-    projects.push(newProject);
+      projects.push(newProject);
 
-    return projects;
-  }, []);
+      return projects;
+    },
+    [],
+  );
 }
