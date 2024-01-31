@@ -1,0 +1,433 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentação da API do Hackathon V5.0 - Portfolio Orange",
+    "version": "1.0.0",
+    "description": "API com a função de documentar e manipular os endpoints da aplicação Portfolio Orange do Squad-21.",
+    "contact": {
+      "name": "Squad-21",
+      "email": "eduardomfrocha@gmail.com"
+    }
+  },
+  "servers": [{
+    "url": "http://localhost:3333/",
+    "description": "Servidor de teste"
+  }],
+  "paths": {
+    "/projects": {
+      "post": {
+        "summary": "Cria um novo projeto",
+        "description": "Essa rota é responsável por criar um novo projeto",
+        "tags": ["Projetos"],
+        "security": [{
+          "bearerAuth": []
+        }],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProject"
+              },
+              "examples": {
+                "CreateProject": {
+                  "value": {
+                    "title": "Título do Projeto",
+                    "link": "https://linkdoprojeto.com",
+                    "description": "Descrição do projeto",
+                    "file": "Upload a file",
+                    "tags": "Tags do projeto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateProject"
+                },
+                "examples": {
+                  "ProjectCreated": {
+                    "value": {
+                      "id": "c5c7a6bb-0d76-420c-9d63-9a2aff3e8e38",
+                      "title": "Título do Projeto",
+                      "link": "https://linkdoprojeto.com",
+                      "description": "Descrição do projeto",
+                      "file": "Upload a file",
+                      "tags": "Tags do projeto",
+                      "updated_at": "2022-09-16T20:16:27.000000Z",
+                      "created_at": "2022-09-16T20:16:27.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                },
+                "examples": {
+                  "Error title": {
+                    "value": {
+                      "status": "error",
+                      "message": "Esse título já está sendo utilizado para um projeto. Informe outro título, por favor."
+                    }
+                  },
+                  "Error link": {
+                    "value": {
+                      "status": "error",
+                      "message": "Esse link já está cadastrado para um projeto."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "examples": {
+                  "Error": {
+                    "value": {
+                      "status": "error",
+                      "message": "Token perdido"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/by-project/{id}": {
+      "get": {
+        "summary": "Carrega os dados de um projeto",
+        "description": "Essa rota é responsável por carregar os dados de um projeto",
+        "tags": ["Projetos"],
+        "security": [{
+          "bearerAuth": []
+        }],
+        "parameters": [{
+          "in": "path",
+          "name": "id",
+          "description": "ID do projeto",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "style": "simple"
+        }],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetProjectById"
+                },
+                "examples": {
+                  "GetProjectById": {
+                    "value": {
+                      "id": "c5c7a6bb-0d76-420c-9d63-9a2aff3e8e38",
+                      "title": "Título do Projeto",
+                      "link": "https://linkdoprojeto.com",
+                      "description": "Descrição do projeto",
+                      "file": "a772a5525d1f46a155b7-Hotpot.png",
+                      "tags": "Web, Mobile",
+                      "created_at": "2022-09-16T20:16:27.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                },
+                "examples": {
+                  "Error title": {
+                    "value": {
+                      "status": "error",
+                      "message": "Não foi possível encontrar esse projeto."
+                    }
+                  },
+                  "Error link": {
+                    "value": {
+                      "status": "error",
+                      "message": "Esse link já está cadastrado para um projeto."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "examples": {
+                  "Error": {
+                    "value": {
+                      "status": "error",
+                      "message": "Token perdido"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "summary": "Login de um Usuário",
+        "description": "Essa rota é responsável por fazer o login de um usuário",
+        "tags": ["Usuários"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "UserLogin": {
+                  "value": {
+                    "email": "johndoe@gmail.com",
+                    "password": "qwerty"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "UserLogin": {
+                    "value": {
+                      "userSession": {
+                        "id": "c5c7a6bb-0d76-420c-9d63-9a2aff3e8e38",
+                        "name": "John",
+                        "lastname": "Doe",
+                        "email": "jonhdoe@gmail.com",
+                        "country": "Brasil",
+                        "updated_at": "2022-09-16T20:16:27.000000Z",
+                        "created_at": "2022-09-16T20:16:27.000000Z"
+                      },
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "examples": {
+                  "Error": {
+                    "value": {
+                      "status": "error",
+                      "message": "Email/senha incorretos"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "Cria um novo usuário",
+        "description": "Essa rota é responsável por criar um novo usuário",
+        "tags": ["Usuários"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUser"
+              },
+              "examples": {
+                "CreateUser": {
+                  "value": {
+                    "name": "John",
+                    "lastname": "Doe",
+                    "email": "johndoe@gmail.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "examples": {
+                  "Error": {
+                    "value": {
+                      "status": "error",
+                      "message": "Esse e-mail já está sendo utilizado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Unauthorized": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateUser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateProject": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string",
+            "format": "base64"
+          },
+          "tags": {
+            "type": "string"
+          }
+        }
+      },
+      "GetProjectById": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+
+
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
