@@ -20,10 +20,7 @@ class FindAllProjectsService {
     private projectsRepository: IProjectsRepository,
   ) {}
 
-  public async execute({
-    userId,
-    query,
-  }: IRequest): Promise<IResponseProjectDTO[]> {
+  public async execute({ userId, query }: IRequest): Promise<void> {
     const isUser = await this.usersRepository.findById(userId);
 
     if (!isUser) {
@@ -33,10 +30,31 @@ class FindAllProjectsService {
       );
     }
 
-    const projects = await this.projectsRepository.findAll(
-      userId,
-      query ? query.toLocaleLowerCase() : null,
-    );
+    let projects: any = [];
+
+    if (query) {
+      const tags = query.toLocaleLowerCase().split('%');
+
+      await Promise.all(
+        tags.map(async tag => {
+          const filteredProjects = await this.projectsRepository.findAll(
+            userId,
+            tag,
+          );
+
+          projects = projects.concat(filteredProjects);
+        }),
+      );
+
+      const uniqueProjects = projects.filter(
+        (project: any, index: any, self: any) =>
+          index === self.findIndex(p => p.id === project.id),
+      );
+
+      projects = uniqueProjects;
+    } else {
+      projects = await this.projectsRepository.findAll(userId, null);
+    }
 
     const formattedProjectsList = formatProjectResponse(projects);
 

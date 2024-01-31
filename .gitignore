@@ -41,6 +41,10 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+tmp/*
+!tmp/.gitkeep
+dist/
+ormconfig.json
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
