@@ -45,6 +45,7 @@ tmp/*
 !tmp/.gitkeep
 ormconfig.json
 dist/
+ormconfig.json
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
