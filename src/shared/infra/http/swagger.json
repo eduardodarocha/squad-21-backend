@@ -9,24 +9,286 @@
       "email": "eduardomfrocha@gmail.com"
     }
   },
-  "servers": [
-    {
-      "url": "http://localhost:3333/teste",
-      "description": "Servidor de teste"
-    }
-  ],
+  "servers": [{
+    "url": "http://localhost:3333/",
+    "description": "Servidor de teste"
+  }],
   "paths": {
-    "/sessions": {
-      "get": {
-        "summary": "Retorna todos os usuários",
-        "description": "Retorna todos os usuários cadastrados na base de dados",
+    "/projects": {
+      "post": {
+        "summary": "Cria um novo projeto",
+        "description": "Essa rota é responsável por criar um novo projeto",
+        "tags": ["Projetos"],
+        "security": [{
+          "bearerAuth": []
+        }],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProject"
+              },
+              "examples": {
+                "CreateProject": {
+                  "value": {
+                    "title": "Título do Projeto",
+                    "link": "https://linkdoprojeto.com",
+                    "description": "Descrição do projeto",
+                    "file": "Upload a file",
+                    "tags": "Tags do projeto"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
-          "200": {
-            "description": "Retorna todos os usuários cadastrados"
+          "201": {
+            "description": "Created",
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateProject"
+                },
+                "examples": {
+                  "ProjectCreated": {
+                    "value": {
+                      "id": "c5c7a6bb-0d76-420c-9d63-9a2aff3e8e38",
+                      "title": "Título do Projeto",
+                      "link": "https://linkdoprojeto.com",
+                      "description": "Descrição do projeto",
+                      "file": "Upload a file",
+                      "tags": "Tags do projeto",
+                      "updated_at": "2022-09-16T20:16:27.000000Z",
+                      "created_at": "2022-09-16T20:16:27.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400":{
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                },
+                "examples": {
+                  "Error": {
+                    "value": {
+                      "status": "error",
+                      "message": "Email/senha incorretos"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "summary": "Login de um Usuário",
+        "description": "Essa rota é responsável por fazer o login de um usuário",
+        "tags": ["Usuários"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "UserLogin": {
+                  "value": {
+                    "email": "jonhdoe@gmail.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "UserLogin": {
+                    "value": {
+                      "userSession": {
+                        "id": "c5c7a6bb-0d76-420c-9d63-9a2aff3e8e38",
+                        "name": "John",
+                        "lastname": "Doe",
+                        "email": "jonhdoe@gmail.com",
+                        "country": "Brasil",
+                        "updated_at": "2022-09-16T20:16:27.000000Z",
+                        "created_at": "2022-09-16T20:16:27.000000Z"
+                      },
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "examples": {
+                  "Error": {
+                    "value": {
+                      "status": "error",
+                      "message": "Email/senha incorretos"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "Cria um novo usuário",
+        "description": "Essa rota é responsável por criar um novo usuário",
+        "tags": ["Usuários"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUser"
+              },
+              "examples": {
+                "CreateUser": {
+                  "value": {
+                    "name": "John",
+                    "lastname": "Doe",
+                    "email": "johndoe@gmail.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "examples": {
+                  "Error": {
+                    "value": {
+                      "status": "error",
+                      "message": "Esse e-mail já está sendo utilizado."
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
-  }
 
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Unauthorized": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateUser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateProject": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string",
+            "format": "base64"
+          },
+          "tags": {
+            "type": "string"
+          }
+        }
+      },
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
 }
