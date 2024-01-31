@@ -43,7 +43,6 @@ node_modules/
 jspm_packages/
 tmp/*
 !tmp/.gitkeep
-ormconfig.json
 dist/
 ormconfig.json
 
