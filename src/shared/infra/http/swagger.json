@@ -281,9 +281,29 @@
           "style": "form",
           "explode": false
         }],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProject"
+              },
+              "examples": {
+                "CreateProject": {
+                  "value": {
+                    "title": "Título do Projeto",
+                    "link": "https://linkdoprojeto.com",
+                    "description": "Descrição do projeto",
+                    "file": "Upload a file",
+                    "tags": "Tags do projeto"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
-          "204": {
-            "description": "No Content - Retornado quando o projeto é deletado"
+          "201": {
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request",
