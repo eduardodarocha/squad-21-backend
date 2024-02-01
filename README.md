@@ -93,9 +93,9 @@ git clone https://github.com/eduardodarocha/squad-21-backend.git
 
 cd squad-21-backend
 
-yarn install
+yarn install | npm install
 
-yarn dev
+yarn dev | npm run dev
 ````
 
 #### - Database local (PostgreSQL)
