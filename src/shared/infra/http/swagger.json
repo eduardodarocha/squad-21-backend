@@ -11,8 +11,13 @@
   },
   "servers": [{
     "url": "http://localhost:3333/",
-    "description": "Servidor de teste"
-  }],
+    "description": "Servidor de desenvolvimento"
+  },
+  {
+    "url": "http://54.87.9.225",
+    "description": "Servidor de produção"
+  }
+],
   "paths": {
     "/projects": {
       "post": {
@@ -286,24 +291,37 @@
             "multipart/form-data": {
               "schema": {
                 "$ref": "#/components/schemas/CreateProject"
-              },
-              "examples": {
-                "CreateProject": {
-                  "value": {
-                    "title": "Título do Projeto",
-                    "link": "https://linkdoprojeto.com",
-                    "description": "Descrição do projeto",
-                    "file": "Upload a file",
-                    "tags": "Tags do projeto"
-                  }
-                }
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "OK"
+            "description": "Create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                },
+                "examples": {
+                  "UpdateProject": {
+                    "value": {
+                      "id": "03ae9923-fa2b-4c52-948d-6930c9e98269",
+                      "user_id": "747c807f-6f14-4c0b-8883-0a9125395c1c",
+                      "title": "Titulo do projeto updated",
+                      "tags": "ui",
+                      "link": "https://uol.com.br/updated",
+                      "description": "Descrição do projeto Updated",
+                      "image": "4b2fcee6469c947b7337-Hotpot-cat1.png",
+                      "created_at": "2024-01-30T15:17:21.819Z",
+                      "updated_at": "2024-02-01T01:18:08.428Z"
+                    }
+                  }
+                }
+              }
+            }
+
+
           },
           "400": {
             "description": "Bad Request",
@@ -344,7 +362,6 @@
         }
       }
     },
-
     "/projects/by-project/{id}": {
       "get": {
         "summary": "Carrega os dados de um projeto pelo id",

@@ -11,11 +11,19 @@
 
 ---
 
-### 📐 O design do projeto se encontra no Figma a seguir
+### 📚 Manual do Hackathon - Projeto Orange Portfólio
+
+<p> Manual com as requisições, regras e propostas do desafio </p>
+
+[Clique aqui](./Manual%20do%20Hackathon%20-%20Programa%20de%20Formação%20Season%205.pdf)
+
+---
+
+### 📐 O design do projeto no Figma
 
 [Figma - Portifólio Orange](https://www.figma.com/file/utDx59m5Opz1lDSN1J4r9I/Desafio---Programa-de-Forma%C3%A7%C3%A3o-5.0?type=design&mode=design&t=upUd2uD97JqrEuYN-0)
 
----
+<!-- ---
 
 ### 🖵 Telas da aplicação
 
@@ -54,29 +62,33 @@
 <br>
  <h5>Tela de projetos Mobile</h5 >
 <img src="./src/shared/views/tela%20de%20projetos%20mobile.jpg" style="width:200px" alt="Tela de projetos mobile">
-<br>
+<br> -->
 
 ---
 
 ### 💾 Tecnologias usadas
 
-- [Node.js](https://nodejs.org/en)
-- [Typescript](https://www.typescriptlang.org/)
-- [Express](https://expressjs.com/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [TypeORM](https://github.com/typeorm/typeorm)
-- [bcrypt.js](https://www.npmjs.com/package/bcryptjs)
-- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
-- [Multer](https://www.npmjs.com/package/multer)
-- [pg](https://www.npmjs.com/package/pg)
-- [AWS](https://aws.amazon.com/pt/)
+[<img src = "https://img.shields.io/badge/github-black.svg?&style=for-the-badge&logo=github&logoColor=white"><br>](https://github.com/)
+<img src = "https://img.shields.io/badge/javascript-grey?style=for-the-badge&logo=javascript"><br>
+[<img src = "https://img.shields.io/badge/Nodejs-black?style=for-the-badge&logo=nodedotjs">](https://nodejs.org/)<br>
+[<img src = "https://img.shields.io/badge/typescript-black?style=for-the-badge&logo=typescript">](https://www.typescriptlang.org/)<br>
+[<img src = "https://img.shields.io/badge/express-black?style=for-the-badge&logo=express">](https://expressjs.com/)<br>
+[<img src = "https://img.shields.io/badge/swagger-black?style=for-the-badge&logo=swagger">](https://swagger.io)<br>
+[<img src = "https://img.shields.io/badge/PostgreSQL-black?style=for-the-badge&logo=PostgreSQL">](https://www.postgresql.org/)<br>
+[<img src = "https://img.shields.io/badge/TypeORM-black?style=for-the-badge&logo=typeform">](https://typeorm.io/)<br>
+[<img src = "https://img.shields.io/badge/Bcryptjs-black?style=for-the-badge&logo=letsencrypt">](https://www.npmjs.com/package/bcryptjs)<br>
+[<img src = "https://img.shields.io/badge/jsonwebtokens-black?style=for-the-badge&logo=jsonwebtokens">](https://www.npmjs.com/package/jsonwebtoken)<br>
+[<img src = "https://img.shields.io/badge/amazon-black?style=for-the-badge&logo=amazon">](https://aws.amazon.com/pt/)<br>
+[<img src = "https://img.shields.io/badge/docker-black?style=for-the-badge&logo=docker">](https://aws.amazon.com/pt/)<br>
 
 ---
 
-### 🛠️ Executando o projeto localmente (Linux ou Windows)
+### 🛠️ Executando o projeto da API localmente (Linux ou Windows)
 
 #### - Api
+
 ````
+
 git clone https://github.com/eduardodarocha/squad-21-backend.git
 
 cd squad-21-backend
@@ -85,18 +97,32 @@ yarn install
 
 yarn dev
 ````
+
 #### - Database local (PostgreSQL)
- - Utilizado o docker para a instalação do PostgreSQL.
+
+- Utilizado o docker para a instalação do PostgreSQL.
+  - É necessário ter o Docker instalado.
+
 ````
+
 docker run -d --name <nome_do_container> -e POSTGRES_USER=<nome_do_usuário> -e POSTGRES_PASSWORD=<senha_do_usuário> -p 5432:5432 -d <imagem_do_postgres>
+
 ````
+
 - Migrations
+
 ````
+
 yarn typeorm migration:generate --name <EscrevaUnNomeParaMigration>
+
 yarn typeorm migration:run
-````
-
-#### Collections
-````
 
 ````
+
+#### - Collections
+
+<p>Collections para uso no <img src="https://cdn.simpleicons.org/insomnia/purple" height="20" width="20" alt="simpleicons" /> Insomnia ou <img src="https://cdn.simpleicons.org/postman/coral" height="20" width="20" alt="simpleicons" /> Postman</p>
+
+[![alt text](image-3.png)](./collections_proj_portfolio_orange.json)
+
+#### - Deploy
