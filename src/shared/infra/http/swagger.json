@@ -9,24 +9,27 @@
       "email": "eduardomfrocha@gmail.com"
     }
   },
-  "servers": [{
-    "url": "http://localhost:3333/",
-    "description": "Servidor de desenvolvimento"
-  },
-  {
-    "url": "http://54.87.9.225",
-    "description": "Servidor de produção"
-  }
-],
+  "servers": [
+    {
+      "url": "http://localhost:3333/",
+      "description": "Servidor de desenvolvimento"
+    },
+    {
+      "url": "http://54.87.9.225",
+      "description": "Servidor de produção"
+    }
+  ],
   "paths": {
     "/projects": {
       "post": {
         "summary": "Cria um novo projeto",
         "description": "Essa rota é responsável por criar um novo projeto",
         "tags": ["Projetos"],
-        "security": [{
-          "bearerAuth": []
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -120,57 +123,25 @@
         "summary": "Carrega todos os projetos",
         "description": "Essa rota é responsável por carregar todos os projetos e pode ser filtrado por termo de busca (tag)",
         "tags": ["Projetos"],
-        "security": [{
-          "bearerAuth": []
-        }],
-        "parameters": [{
-          "in": "query",
-          "name": "search",
-          "description": "Termo de busca",
-          "required": false,
-          "schema": {
-            "type": "string"
-          },
-          "style": "form",
-          "explode": false
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "description": "Termo de busca",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false
+          }
+        ],
         "responses": {
-          "201": {
-            "description": "OK - Retorna projetos, se o(s) termo(s) forem encontrado(s), sem nenhum termo, retorna todos os projetos",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetAllProjectsByUser"
-                },
-                "examples": {
-                  "GetAllProjectsByUser": {
-                    "value": [
-                    {
-                      "id": "18cfa71f-3f1c-4367-b545-203c3396cc98",
-                      "user_name": "John Doe",
-                      "title": "Projeto do Insomnia",
-                      "tags": "web,ui",
-                      "link": "https://insomnia.rest/download",
-                      "description": "Esse é um projeto de teste do Insomnia",
-                      "image_url": "/images/2db29d079013552de555-a_cats_face_in_turkish_art_design_pattern_post (1).jpg",
-                      "created_at": "2024-01-30T14:53:39.061Z"
-                    },
-                    {
-                      "id": "03ae9923-fa2b-4c52-948d-6930c9e98269",
-                      "user_name": "John Doe",
-                      "title": "Projeto Página UOL",
-                      "tags": "ui",
-                      "link": "https://uol.com.br/index",
-                      "description": "Projeto de teste do Insomnia Update",
-                      "image_url": "/images/a772a5525d1f46a155b7-Hotpot-cat1.png",
-                      "created_at": "2024-01-30T15:17:21.819Z"
-                    }
-                  ]
-                  }
-                }
-              }
-            }
-          },
           "200": {
             "description": "OK - Se os termos não existirem, retorna um array vazio.",
             "content": {
@@ -181,6 +152,42 @@
                 "examples": {
                   "GetAllProjectsByTokenFiltered": {
                     "value": []
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "OK - Retorna projetos, se o(s) termo(s) forem encontrado(s), sem nenhum termo, retorna todos os projetos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllProjectsByUser"
+                },
+                "examples": {
+                  "GetAllProjectsByUser": {
+                    "value": [
+                      {
+                        "id": "18cfa71f-3f1c-4367-b545-203c3396cc98",
+                        "user_name": "John Doe",
+                        "title": "Projeto do Insomnia",
+                        "tags": "web,ui",
+                        "link": "https://insomnia.rest/download",
+                        "description": "Esse é um projeto de teste do Insomnia",
+                        "image_url": "/images/2db29d079013552de555-a_cats_face_in_turkish_art_design_pattern_post (1).jpg",
+                        "created_at": "2024-01-30T14:53:39.061Z"
+                      },
+                      {
+                        "id": "03ae9923-fa2b-4c52-948d-6930c9e98269",
+                        "user_name": "John Doe",
+                        "title": "Projeto Página UOL",
+                        "tags": "ui",
+                        "link": "https://uol.com.br/index",
+                        "description": "Projeto de teste do Insomnia Update",
+                        "image_url": "/images/a772a5525d1f46a155b7-Hotpot-cat1.png",
+                        "created_at": "2024-01-30T15:17:21.819Z"
+                      }
+                    ]
                   }
                 }
               }
@@ -212,20 +219,24 @@
         "summary": " Deleta um projeto pelo id",
         "description": "Essa rota é responsável por deletar um projeto pelo id",
         "tags": ["Projetos"],
-        "security": [{
-          "bearerAuth": []
-        }],
-        "parameters": [{
-          "in": "path",
-          "name": "id",
-          "description": "Id do projeto",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "style": "form",
-          "explode": false
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Id do projeto",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false
+          }
+        ],
         "responses": {
           "204": {
             "description": "No Content - Retornado quando o projeto é deletado"
@@ -272,20 +283,24 @@
         "summary": "Faz a atualização de um projeto pelo id",
         "description": "Essa rota é responsável por fazer a atualização de um projeto pelo id",
         "tags": ["Projetos"],
-        "security": [{
-          "bearerAuth": []
-        }],
-        "parameters": [{
-          "in": "path",
-          "name": "id",
-          "description": "Id do projeto",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "style": "form",
-          "explode": false
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Id do projeto",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false
+          }
+        ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -320,8 +335,6 @@
                 }
               }
             }
-
-
           },
           "400": {
             "description": "Bad Request",
@@ -367,19 +380,23 @@
         "summary": "Carrega os dados de um projeto pelo id",
         "description": "Essa rota é responsável por carregar os dados de um projeto pelo id",
         "tags": ["Projetos"],
-        "security": [{
-          "bearerAuth": []
-        }],
-        "parameters": [{
-          "in": "path",
-          "name": "id",
-          "description": "ID do projeto",
-          "required": true,
-          "schema": {
-            "type": "string"
-          },
-          "style": "simple"
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do projeto",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -454,57 +471,25 @@
         "summary": "Carrega todos os projetos de um usuário",
         "description": "Essa rota é responsável por carregar todos os projetos de um usuário pelo token e pode ser filtrado por termo de busca (tag)",
         "tags": ["Projetos"],
-        "security": [{
-          "bearerAuth": []
-        }],
-        "parameters": [{
-          "in": "query",
-          "name": "search",
-          "description": "Termo de busca",
-          "required": false,
-          "schema": {
-            "type": "string"
-          },
-          "style": "form",
-          "explode": false
-        }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "description": "Termo de busca",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false
+          }
+        ],
         "responses": {
-          "201": {
-            "description": "OK - Retorna projetos, se o(s) termo(s) forem encontrado(s), sem nenhum termo, retorna todos os projetos",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetAllProjectsByUser"
-                },
-                "examples": {
-                  "GetAllProjectsFiltered": {
-                    "value": [
-                    {
-                      "id": "18cfa71f-3f1c-4367-b545-203c3396cc98",
-                      "user_name": "John Doe",
-                      "title": "Projeto do Insomnia",
-                      "tags": "web,ui",
-                      "link": "https://insomnia.rest/download",
-                      "description": "Esse é um projeto de teste do Insomnia",
-                      "image_url": "/images/2db29d079013552de555-a_cats_face_in_turkish_art_design_pattern_post (1).jpg",
-                      "created_at": "2024-01-30T14:53:39.061Z"
-                    },
-                    {
-                      "id": "03ae9923-fa2b-4c52-948d-6930c9e98269",
-                      "user_name": "John Doe",
-                      "title": "Projeto Página UOL",
-                      "tags": "ui",
-                      "link": "https://uol.com.br/index",
-                      "description": "Projeto de teste do Insomnia Update",
-                      "image_url": "/images/a772a5525d1f46a155b7-Hotpot-cat1.png",
-                      "created_at": "2024-01-30T15:17:21.819Z"
-                    }
-                  ]
-                  }
-                }
-              }
-            }
-          },
           "200": {
             "description": "OK - Se os termos não existirem, retorna um array vazio.",
             "content": {
@@ -515,6 +500,42 @@
                 "examples": {
                   "GetAllProjectsFiltered": {
                     "value": []
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "OK - Retorna projetos, se o(s) termo(s) forem encontrado(s), sem nenhum termo, retorna todos os projetos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllProjectsByUser"
+                },
+                "examples": {
+                  "GetAllProjectsFiltered": {
+                    "value": [
+                      {
+                        "id": "18cfa71f-3f1c-4367-b545-203c3396cc98",
+                        "user_name": "John Doe",
+                        "title": "Projeto do Insomnia",
+                        "tags": "web,ui",
+                        "link": "https://insomnia.rest/download",
+                        "description": "Esse é um projeto de teste do Insomnia",
+                        "image_url": "/images/2db29d079013552de555-a_cats_face_in_turkish_art_design_pattern_post (1).jpg",
+                        "created_at": "2024-01-30T14:53:39.061Z"
+                      },
+                      {
+                        "id": "03ae9923-fa2b-4c52-948d-6930c9e98269",
+                        "user_name": "John Doe",
+                        "title": "Projeto Página UOL",
+                        "tags": "ui",
+                        "link": "https://uol.com.br/index",
+                        "description": "Projeto de teste do Insomnia Update",
+                        "image_url": "/images/a772a5525d1f46a155b7-Hotpot-cat1.png",
+                        "created_at": "2024-01-30T15:17:21.819Z"
+                      }
+                    ]
                   }
                 }
               }
@@ -540,7 +561,6 @@
           }
         }
       }
-
     },
     "/sessions": {
       "post": {
@@ -761,38 +781,38 @@
             "format": "date-time"
           }
         }
-
-
       },
-        "GetAllProjectsByUser":{
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "user_name": {
-              "type": "string"
-            },
-            "title": {
-              "type": "string"
-            },
-            "tags": {
-              "type": "string"
-            },
-            "link": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },"image_url": {
-              "type": "string"
-            },
-            "created_at": {
-              "type": "string",
-              "format": "date-time"
-            }
+      "GetAllProjectsByUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "user_name": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       }
-    }},
+    },
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
