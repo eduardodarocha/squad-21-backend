@@ -68,18 +68,18 @@
 
 ### 💾 Tecnologias usadas
 
-[<img src = "https://img.shields.io/badge/github-black.svg?&style=for-the-badge&logo=github&logoColor=white"><br>](https://github.com/)
-<img src = "https://img.shields.io/badge/javascript-grey?style=for-the-badge&logo=javascript"><br>
-[<img src = "https://img.shields.io/badge/Nodejs-black?style=for-the-badge&logo=nodedotjs">](https://nodejs.org/)<br>
-[<img src = "https://img.shields.io/badge/typescript-black?style=for-the-badge&logo=typescript">](https://www.typescriptlang.org/)<br>
+[<img src = "https://img.shields.io/badge/github-D7D7D7.svg?&style=for-the-badge&logo=github&logoColor=white"><br>](https://github.com/)
+<img src = "https://img.shields.io/badge/javascript-black?style=for-the-badge&logo=javascript"><br>
+[<img src = "https://img.shields.io/badge/Nodejs-white?style=for-the-badge&logo=nodedotjs">](https://nodejs.org/)<br>
+[<img src = "https://img.shields.io/badge/typescript-lightblue?style=for-the-badge&logo=typescript">](https://www.typescriptlang.org/)<br>
 [<img src = "https://img.shields.io/badge/express-black?style=for-the-badge&logo=express">](https://expressjs.com/)<br>
-[<img src = "https://img.shields.io/badge/swagger-black?style=for-the-badge&logo=swagger">](https://swagger.io)<br>
+[<img src = "https://img.shields.io/badge/swagger-darkgreen?style=for-the-badge&logo=swagger">](https://swagger.io)<br>
 [<img src = "https://img.shields.io/badge/PostgreSQL-black?style=for-the-badge&logo=PostgreSQL">](https://www.postgresql.org/)<br>
-[<img src = "https://img.shields.io/badge/TypeORM-black?style=for-the-badge&logo=typeform">](https://typeorm.io/)<br>
+[<img src = "https://img.shields.io/badge/TypeORM-E83524?style=for-the-badge&logo=typeform">](https://typeorm.io/)<br>
 [<img src = "https://img.shields.io/badge/Bcryptjs-black?style=for-the-badge&logo=letsencrypt">](https://www.npmjs.com/package/bcryptjs)<br>
 [<img src = "https://img.shields.io/badge/jsonwebtokens-black?style=for-the-badge&logo=jsonwebtokens">](https://www.npmjs.com/package/jsonwebtoken)<br>
-[<img src = "https://img.shields.io/badge/amazon-black?style=for-the-badge&logo=amazon">](https://aws.amazon.com/pt/)<br>
-[<img src = "https://img.shields.io/badge/docker-black?style=for-the-badge&logo=docker">](https://aws.amazon.com/pt/)<br>
+[<img src = "https://img.shields.io/badge/AWS-black?style=for-the-badge&logo=amazonaws">](https://aws.amazon.com/pt/)<br>
+[<img src = "https://img.shields.io/badge/docker-white?style=for-the-badge&logo=docker">](https://www.docker.com/)<br>
 
 ---
 
