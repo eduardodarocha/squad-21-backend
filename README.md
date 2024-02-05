@@ -23,47 +23,6 @@
 
 [Figma - Portifólio Orange](https://www.figma.com/file/utDx59m5Opz1lDSN1J4r9I/Desafio---Programa-de-Forma%C3%A7%C3%A3o-5.0?type=design&mode=design&t=upUd2uD97JqrEuYN-0)
 
-<!-- ---
-
-### 🖵 Telas da aplicação
-
-#### - 🖥️ Desktop
-
-<h5>Tela de login</h5>
-<img src="./src/shared/views/tela%20de%20login.jpg" style="width:500px" alt="Tela de login">
-<br>
-<br>
-
-<h5>Tela de cadastro</h5>
-<img src="./src/shared/views/tela%20de%20cadastro.jpg" style="width:500px" alt="Tela de cadastro">
-<br>
-<br>
-
-<h5>Tela de projetos</h5>
-<img src="./src/shared/views/tela%20de%20projetos.jpg" style="width:500px" alt="Tela de projetos">
-<br>
-<br>
-
-<h5>Tela descobrir projetos</h5>
-<img src="./src/shared/views/tela%20descobrir.jpg" style="width:500px" alt="Tela descobrir projetos">
-<br>
-<br>
-
-#### - 📱Mobile
-
-<h5>Tela de login Mobile</h5>
-<img src="./src/shared/views/tela%20de%20login%20mobile.jpg" style="width:200px" alt="Tela de login mobile">
-<br>
-<br>
-
-<h5>Tela de cadastro Mobile</h5>
-<img src="./src/shared/views/tela%20de%20cadastro%20mobile.jpg" style="width:200px" alt="Tela de cadastro mobile">
-<br>
-<br>
- <h5>Tela de projetos Mobile</h5 >
-<img src="./src/shared/views/tela%20de%20projetos%20mobile.jpg" style="width:200px" alt="Tela de projetos mobile">
-<br> -->
-
 ---
 
 ### 💾 Tecnologias usadas
@@ -119,10 +78,31 @@ yarn typeorm migration:run
 
 ````
 
+### 📚 Documentação da API
+
 #### - Collections
 
 <p>Collections para uso no <img src="https://cdn.simpleicons.org/insomnia/purple" height="20" width="20" alt="simpleicons" /> Insomnia ou <img src="https://cdn.simpleicons.org/postman/coral" height="20" width="20" alt="simpleicons" /> Postman</p>
 
 [![alt text](image-3.png)](./collections_proj_portfolio_orange.json)
 
-#### - Deploy
+#### - Swagger
+
+[Swagger Api Documentation](https://api.eduardorocha.dev/api-docs/)
+
+[![Swagger](Swagger.jpg)](https://api.eduardorocha.dev/api-docs/)
+
+### ☁️ Deploy Produção
+
+- API - [AWS EC2](https://aws.amazon.com/pt/ec2/ "Capacidade de computação segura e redimensionável para praticamente qualquer workload")
+- Database - [AWS EC2](https://aws.amazon.com/pt/ec2/ "Capacidade de computação segura e redimensionável para praticamente qualquer workload")
+- Imagens - [AWS S3](https://aws.amazon.com/pt/s3/ "Armazenamento de objetos construído para armazenar e recuperar qualquer volume de dados de qualquer loca")
+
+
+### 🚀 Equipe do Squad-21
+
+- Bruna Lima (Backend) - [Github](https://github.com/BruFurtado) [Linkedin](https://www.linkedin.com/in/brunalima)
+- Eduardo Rocha (Backend) - [Github](https://github.com/eduardodarocha) [Linkedin](https://www.linkedin.com/in/eduardo-rocha-dev/)
+- Gleison Ferreira (Frontend)- [Github](https://github.com/gleisonfernandes) [Linkedin](https://www.linkedin.com/in/gleison-fernandes-da-silva-54b907105/)
+- Luisa Lopes (Frontend) - [Github](https://github.com/herlocksholmes1888) [Linkedin](https://www.linkedin.com/in/luisa-frugoli-valente-lopes-b5b533231/)
+
