@@ -106,3 +106,5 @@ yarn typeorm migration:run
 - Gleison Ferreira (Frontend)- [Github](https://github.com/gleisonfernandes) [Linkedin](https://www.linkedin.com/in/gleison-fernandes-da-silva-54b907105/)
 - Luisa Lopes (Frontend) - [Github](https://github.com/herlocksholmes1888) [Linkedin](https://www.linkedin.com/in/luisa-frugoli-valente-lopes-b5b533231/)
 
+
+## 👏🏼 Agradecimentos especiais à equipe de mentores do Programa de Formação da FCamara e a todas as pessoas que nos ajudaram no decorrer de todo o processo! 🙏🏻
